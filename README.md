@@ -11,7 +11,7 @@ Exemple de renommage :
 
 IMG_1234.jpg -> 2025-04-25_00-14-22.jpg
 
-En cas de doublous:
+En cas de doublons:
 
 2025-04-25_00-14-22.jpg -> 2025-04-25_00-14-22_1.jpg -> ...
 
