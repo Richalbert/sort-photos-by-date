@@ -36,16 +36,14 @@ pip install -r requirements.txt
 </code>
 
 
-## 🚀 Utilisation
-
-### 1. Tester en mode simulation
+## Utilisation sans l'interface graphique
 
 <code>
-python sorter.py /chemin/vers/tes/photos --simulate
+python sorter.py /chemin/vers/photos --simulate     # ou pas
 </code>
 
-### 2. Appliquer les renommages
+## Utilisation avec interface graphique
 
 <code>
-python sorter.py /chemin/vers/tes/photos
+python gui.py
 </code>
