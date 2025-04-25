@@ -1,11 +1,7 @@
 # sort-photos-by-date
 
 Script simple pour renommer automatiquement les fichiers photos selon leur date de prise de vue réelle (EXIF), afin qu'ils soient correctement triés sur tous les systèmes (Linux, macOS…).
-
-
-## 🎯 Objectif
-
-Réorganiser et renommer les fichiers `.jpg`/.`jpeg` dans un dossier en utilisant leur date réelle de capture, extraite des métadonnées EXIF.
+avec interface graphique minimaliste qui selectionne le dossier photos + simulation + bouton tri + affiche les logs
 
 Exemple de renommage :
 
@@ -18,44 +14,38 @@ En cas de doublons:
 
 ## Installation et environnement virtuel
 
-1. Cloner le depot
-
-git clone https://github.com/<ton-utilisateur>/sort-photos-by-date.git
+### 1. Cloner le depot
+<code>
+git clone https://github.com/Richalbert/sort-photos-by-date.git
 cd sort-photos-by-date
+</code>
 
-
-2. Creer un environnement virtuel
-
+### 2. Creer un environnement virtuel
+<code>
 python3 -m venv venv
+</code>
 
-
-3. Activer l'environnement
-
+### 3. Activer l'environnement
+<code>
 source venv/bin/activate
+</code>
 
-
-4. Installer les dependances
-
+### 4. Installer les dependances
+<code>
 pip install -r requirements.txt
-
-
-
+</code>
 
 
 ## 🚀 Utilisation
 
-1. Tester en mode simulation
+### 1. Tester en mode simulation
 
-```bash
+<code>
 python sorter.py /chemin/vers/tes/photos --simulate
+</code>
 
+### 2. Appliquer les renommages
 
-
-
-
-
-2. Appliquer les renommages
-
-```bash
+<code>
 python sorter.py /chemin/vers/tes/photos
-
+</code>
