@@ -1,63 +1,75 @@
-#!/usr/bin/env python3
-
 import os
 import sys
-from datetime import datetime
+import argparse
 from PIL import Image
 from PIL.ExifTags import TAGS
+from datetime import datetime
 
 def get_exif_date(file_path):
     try:
-        image = Image.open(file_path)
-        exif_data = image._getexif()
-        if not exif_data:
-            return None
-        for tag, value in exif_data.items():
-            tag_name = TAGS.get(tag, tag)
-            if tag_name == 'DateTimeOriginal':
-                return datetime.strptime(value, "%Y:%m:%d %H:%M:%S")
+        with Image.open(file_path) as img:
+            exif_data = img._getexif()
+            if exif_data is not None:
+                for tag_id, value in exif_data.items():
+                    tag = TAGS.get(tag_id, tag_id)
+                    if tag == 'DateTimeOriginal':
+                        return datetime.strptime(value, "%Y:%m:%d %H:%M:%S")
     except Exception as e:
-        print(f"Erreur EXIF sur {file_path} : {e}")
+        print(f"Erreur EXIF pour {file_path} : {e}")
     return None
 
-def rename_photos_by_date(directory, simulate=False):
-    counter = {}
-    for filename in os.listdir(directory):
-        file_path = os.path.join(directory, filename)
-        if not os.path.isfile(file_path):
-            continue
-        if not filename.lower().endswith(('.jpg', '.jpeg')):
+def generate_new_name(date_taken, ext, existing_names):
+    base_name = date_taken.strftime("%Y-%m-%d_%H-%M-%S")
+    new_name = f"{base_name}{ext}"
+    counter = 1
+    while new_name in existing_names:
+        new_name = f"{base_name}_{counter}{ext}"
+        counter += 1
+    return new_name
+
+def sort_photos(directory, simulate=False):
+    if not os.path.isdir(directory):
+        print(f"Le dossier '{directory}' n'existe pas.")
+        return
+
+    print(f"{'Simulation de' if simulate else 'Début du'} tri des photos dans : {directory}\n")
+
+    files = os.listdir(directory)
+    existing_names = set()
+    for filename in files:
+        filepath = os.path.join(directory, filename)
+        if not os.path.isfile(filepath):
             continue
 
-        date_taken = get_exif_date(file_path)
+        ext = os.path.splitext(filename)[1].lower()
+        if ext not in ['.jpg', '.jpeg', '.png']:
+            continue
+
+        date_taken = get_exif_date(filepath)
         if not date_taken:
-            print(f"Date EXIF non trouvée pour : {filename}")
+            print(f"[IGNORÉ] Pas de date trouvée pour : {filename}")
             continue
 
-        base_name = date_taken.strftime("%Y-%m-%d_%H-%M-%S")
-        new_name = base_name + ".jpg"
-        while os.path.exists(os.path.join(directory, new_name)):
-            counter[base_name] = counter.get(base_name, 1) + 1
-            new_name = f"{base_name}_{counter[base_name]}.jpg"
-
+        new_name = generate_new_name(date_taken, ext, existing_names)
         new_path = os.path.join(directory, new_name)
+        existing_names.add(new_name)
+
         if simulate:
-            print(f"[SIMULATION] {filename} → {new_name}")
+            print(f"[SIMULATION] {filename} -> {new_name}")
         else:
-            os.rename(file_path, new_path)
-            print(f"Renommé : {filename} → {new_name}")
+            try:
+                os.rename(filepath, new_path)
+                print(f"[RENOMMÉ] {filename} -> {new_name}")
+            except Exception as e:
+                print(f"[ERREUR] Échec renommage de {filename} : {e}")
+
+    print("\nTri terminé.")
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2 or len(sys.argv) > 3:
-        print("Usage : python sorter.py /chemin/vers/dossier/photos [--simulate]")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description="Trier les photos par date EXIF.")
+    parser.add_argument("directory", help="Répertoire contenant les photos")
+    parser.add_argument("--simulate", action="store_true", help="Simuler le renommage (aucun changement)")
+    args = parser.parse_args()
 
-    photos_dir = sys.argv[1]
-    simulate = "--simulate" in sys.argv
-
-    if not os.path.isdir(photos_dir):
-        print("Erreur : le chemin fourni n'est pas un dossier.")
-        sys.exit(1)
-
-    rename_photos_by_date(photos_dir, simulate)
+    sort_photos(args.directory, simulate=args.simulate)
 
