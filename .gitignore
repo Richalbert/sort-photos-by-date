@@ -1,0 +1,21 @@
+# Projet : Sort Photos by Date
+# Version: 1.0.0
+# File   : .gitignore
+
+# Environnements virtuels
+venv/
+__pycache__/
+
+
+# Dossiers de build
+build/
+dist/
+
+
+# Fichiers de log ou temporaires
+*.log
+*.tmp
+
+
+# Fichiers secrets
+config.json
