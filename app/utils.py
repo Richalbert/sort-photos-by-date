@@ -1,6 +1,11 @@
-"""
-utils.py — Fonctions utilitaires pour l'application 'sort-photos-by-date'.
-"""
+# Project     : sort-photos-by-date
+# File        : app/utils.py
+# Date        : 2025-05-01
+# Author      : Richalbert
+# Version     : 1.0.0
+# Description : Fonctions utilitaires pour l'application 
+# Notes       : Version pour macOS
+
 
 import os
 import re
