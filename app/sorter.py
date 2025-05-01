@@ -1,12 +1,18 @@
-"""
-sorter.py — Gère le tri et le renommage des photos selon les métadonnées EXIF.
-Fonctionne avec un callback de log pour affichage direct dans l'interface.
-"""
+# Project     : sort-photos-by-date
+# File        : app/sorter.py
+# Date        : 2025-05-01
+# Author      : Richalbert
+# Version     : 1.0.0
+# Description : Gere le tri et le renommage des photos 
+#               utilise les metadonnees EXIF
+#               Fonctionne avec un callback de log et affichage dans l'interface
+# Notes       : Version pour macOS
+
 
 import os
 import shutil
 from datetime import datetime
-from app.utils import extract_exif_date     # Import depuis app/utils.py
+from app.utils import extract_exif_date 
 
 
 def sort_photos(directory, simulate=False, log_callback=print):
