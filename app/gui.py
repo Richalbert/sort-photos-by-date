@@ -54,7 +54,8 @@ class PhotoSorterApp:
         # Boutons d'action
         action_frame = tk.Frame(self.root, padx=10, pady=10)
         action_frame.pack(fill=tk.X)
-        tk.Button(action_frame, text="Lancer le tri", command=self.run_sorting).pack(side=tk.LEFT)
+        #tk.Button(action_frame, text="Lancer le tri", command=self.run_sorting).pack(side=tk.LEFT)
+        tk.Button(action_frame, text="Lancer le tri", command=self.run_sorting).pack(pady=(5,10))
 
         # Zone d'affichage des logs
         log_frame = tk.Frame(self.root, padx=10, pady=10)

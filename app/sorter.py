@@ -54,7 +54,8 @@ def sort_photos(directory, simulate=False, log_callback=print):
         else:
             try:
                 shutil.move(original_path, new_path)
-                log_callback(f"✅ {filename} renommé en {new_name}")
+                #log_callback(f"✅ {filename} renommé en {new_name}")
+                log_callback(f"[Renommage] {filename} → {new_name}")
                 renamed_count += 1
             except Exception as e:
                 log_callback(f"❌ Erreur avec {filename} : {e}")
