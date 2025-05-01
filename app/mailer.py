@@ -1,9 +1,12 @@
-"""
-app/mailer.py
 
-Contient la fonction d'envoi d'email pour transmettre les logs de l'application.
-Utilise smtplib et email.message.
-"""
+# Project     : sort-photos-by-date
+# File        : app/mailer.py
+# Date        : 2025-05-01
+# Author      : Richalbert
+# Version     : 1.0.0
+# Description : Contient la fonction d'envoi de mail des logs
+# Notes       : Version pour macOS
+
 
 import smtplib
 from email.message import EmailMessage
