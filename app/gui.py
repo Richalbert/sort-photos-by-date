@@ -1,9 +1,10 @@
-"""
-Module: gui
-Description: Interface graphique de l'application "Sort Photos by Date"
-Auteur: Richard + ChatGPT
-Date: 2025
-"""
+# Project     : sort-photos-by-date
+# File        : app/gui.py
+# Date        : 2025-05-01
+# Author      : Richalbert
+# Version     : 1.0.0
+# Description : Interface graphique de l'application
+# Notes       : Version pour macOS
 
 import os
 import tkinter as tk
@@ -55,7 +56,7 @@ class PhotoSorterApp:
         action_frame = tk.Frame(self.root, padx=10, pady=10)
         action_frame.pack(fill=tk.X)
         #tk.Button(action_frame, text="Lancer le tri", command=self.run_sorting).pack(side=tk.LEFT)
-        tk.Button(action_frame, text="Lancer le tri", command=self.run_sorting).pack(pady=(5,10))
+        tk.Button(action_frame, text="Lancer le tri des photos", command=self.run_sorting).pack(pady=(5,10))
 
         # Zone d'affichage des logs
         log_frame = tk.Frame(self.root, padx=10, pady=10)
@@ -95,7 +96,7 @@ class PhotoSorterApp:
 
         try:
             sort_photos(path, simulate=self.simulate.get(), log_callback=log_callback)
-            messagebox.showinfo("Succès", "Tri terminé.")
+            messagebox.showinfo("Succès", "Tri terminé")
         except Exception as e:
             log_callback(f"Erreur : {e}")
             messagebox.showerror("Erreur", str(e))
@@ -107,12 +108,12 @@ class PhotoSorterApp:
         logs = self.log_text.get("1.0", tk.END).strip()
 
         if not logs:
-            messagebox.showinfo("Aucun log", "Aucun log à envoyer.")
+            messagebox.showinfo("Aucun log", "Aucun log à envoyer")
             return
 
         try:
             send_log_email(logs)
-            messagebox.showinfo("Email envoyé", "Les logs ont été envoyés.")
+            messagebox.showinfo("Email envoyé", "Les logs ont été envoyés")
         except Exception as e:
             messagebox.showerror("Erreur", f"Impossible d'envoyer les logs :\n{e}")
 
