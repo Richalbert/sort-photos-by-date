@@ -9,7 +9,7 @@ Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/)
 ## [1.1.0] - En développement
 
 ### TODO MINOR (a remplace par Ajouté lorsque fini)
-- decocher la case a cocher Simulation par defaut
+- [OK] decocher la case a cocher Simulation par defaut
 - [OK] modifier l'icone du logiciel (amelioration visuelle)
 - ajouter l'icone dans la fenetre principale
 - prendre en compte les fichiers video lors du tri
