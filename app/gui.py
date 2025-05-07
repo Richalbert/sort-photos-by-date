@@ -29,7 +29,7 @@ class PhotoSorterApp:
 
         # Variables
         self.directory_path = tk.StringVar()
-        self.simulate = tk.BooleanVar(value=True)
+        self.simulate = tk.BooleanVar(value=False)
         self.logs = []
 
         # Crée toute l'interface
