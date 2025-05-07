@@ -2,7 +2,7 @@
 # File        : app/gui.py
 # Date        : 2025-05-01
 # Author      : Richalbert
-# Version     : 1.0.0
+# Version     : 1.1.0
 # Description : Interface graphique de l'application
 # Notes       : Version pour macOS
 
@@ -50,7 +50,7 @@ class PhotoSorterApp:
         # Mode simulation
         sim_frame = tk.Frame(self.root, padx=10, pady=5)
         sim_frame.pack(fill=tk.X)
-        tk.Checkbutton(sim_frame, text="Simulation (ne renomme pas réellement)", variable=self.simulate).pack(anchor='w')
+        tk.Checkbutton(sim_frame, text="Simulation (ne renomme pas réellement les photos)", variable=self.simulate).pack(anchor='w')
 
         # Boutons d'action
         action_frame = tk.Frame(self.root, padx=10, pady=10)
