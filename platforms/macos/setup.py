@@ -1,8 +1,8 @@
 # Project     : sort-photos-by-date
 # File        : platforms/macos/setup.py
-# Date        : 2025-05-01
+# Date        : 2025-05-07
 # Author      : Richalbert
-# Version     : 1.0.0
+# Version     : 1.1.0
 # Description : Permet a py2app de packager l'application Python en une 
 #               application .app native macOS
 # Notes       : Version pour macOS
@@ -19,9 +19,9 @@ OPTIONS = {
     'plist': {
         'CFBundleName': 'Sort_Photos_by_Date',
         'CFBundleDisplayName': 'Sort_Photos_by_Date',
-        'CFBundleVersion': '1.0.0',
+        'CFBundleVersion': '1.1.0',
         'CFBundleIdentifier': 'com.richalbert.sortphotosbydate',
-        'CFBundleShortVersionString': '1.0',
+        'CFBundleShortVersionString': '1.1',
         'LSMinimumSystemVersion': '10.13'
     }
 }
