@@ -10,7 +10,7 @@ Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/)
 
 ### TODO MINOR (a remplace par Ajouté lorsque fini)
 - decocher la case a cocher Simulation par defaut
-- modifier l'icone du logiciel (amelioration visuelle)
+- [OK] modifier l'icone du logiciel (amelioration visuelle)
 - ajouter l'icone dans la fenetre principale
 - prendre en compte les fichiers video lors du tri
 - modifier les fichiers erreurs a la main selon un gabarit
