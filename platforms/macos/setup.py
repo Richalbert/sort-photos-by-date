@@ -15,7 +15,7 @@ OPTIONS = {
     'argv_emulation': True,
     'includes': ['PIL', 'tkinter'],
     'packages': ['PIL'],
-    'iconfile': 'app.icns',
+    'iconfile': 'icon.icns',
     'plist': {
         'CFBundleName': 'Sort_Photos_by_Date',
         'CFBundleDisplayName': 'Sort_Photos_by_Date',
